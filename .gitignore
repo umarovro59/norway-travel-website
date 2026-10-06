@@ -42,3 +42,6 @@ next-env.d.ts
 
 # design reference (third-party screenshot, not used by the site, kept locally only)
 /public/reference/
+
+.vercel
+.env*

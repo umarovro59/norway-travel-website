@@ -1,0 +1,3 @@
+# never upload the local design reference (third-party screenshot)
+/public/reference
+.env*
