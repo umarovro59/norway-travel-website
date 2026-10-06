@@ -9,7 +9,10 @@
   --stone-200: #d9cfc3;
   --stone-300: #c4b9ac;
   --stone-400: #b3a89c;
-  --stone-500: #a59b90; /* page */
+  --stone-500: #a59b90;
+  --sand-100: #f1ebe2; /* lightest page tone */
+  --sand-200: #e9e1d5; /* page */
+  --sand-300: #dfd5c7;
   --stone-600: #968c82;
   --stone-700: #7b7168;
   --taupe-800: #554c44;
@@ -32,10 +35,11 @@
   --off-white: #f4efe8;
   --off-white-muted: rgba(244, 239, 232, 0.78);
 
-  --line-dark: rgba(33, 29, 26, 0.2);
+  --line-dark: rgba(33, 29, 26, 0.16);
   --line-light: rgba(244, 239, 232, 0.26);
 
-  --page: var(--stone-500);
+  /* light warm-neutral page: milky sand, never pure white */
+  --page: var(--sand-200);
 
   /* type — EN: Lato + Cormorant Garamond */
   --font-sans: var(--font-lato), var(--font-manrope), sans-serif;
@@ -51,8 +55,8 @@
   --radius-lg: clamp(14px, 1.4vw, 22px);
   --radius-xl: clamp(16px, 1.6vw, 26px);
 
-  --shadow-soft: 0 50px 90px -40px rgba(43, 32, 24, 0.55), 0 22px 40px -26px rgba(43, 32, 24, 0.4);
-  --shadow-card: 0 30px 60px -36px rgba(43, 32, 24, 0.55);
+  --shadow-soft: 0 50px 90px -40px rgba(60, 44, 30, 0.42), 0 22px 40px -26px rgba(60, 44, 30, 0.3);
+  --shadow-card: 0 30px 60px -36px rgba(60, 44, 30, 0.45);
 
   /* motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -109,8 +113,8 @@ body {
   /* soft light falloff + fine paper grain */
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(120% 60% at 50% 0%, rgba(255, 250, 243, 0.14), transparent 60%),
-    linear-gradient(180deg, #a1978c 0%, var(--page) 30%, #a89e93 70%, #a39990 100%);
+    radial-gradient(120% 60% at 50% 0%, rgba(255, 252, 246, 0.55), transparent 60%),
+    linear-gradient(180deg, #e4dbcf 0%, var(--page) 28%, var(--sand-100) 64%, #e6ddd0 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

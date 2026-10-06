@@ -27,8 +27,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(171, 161, 150, 0.94) 0%, rgba(171, 161, 150, 0.8) 46%, rgba(171, 161, 150, 0.38) 100%),
-    linear-gradient(180deg, rgba(171, 161, 150, 0.2), rgba(150, 140, 130, 0.35));
+    linear-gradient(90deg, rgba(236, 229, 219, 0.95) 0%, rgba(236, 229, 219, 0.82) 46%, rgba(236, 229, 219, 0.4) 100%),
+    linear-gradient(180deg, rgba(241, 235, 226, 0.15), rgba(214, 203, 189, 0.3));
 }
 
 .inner {
@@ -104,6 +104,6 @@
   }
 
   .bg::after {
-    background: linear-gradient(180deg, rgba(171, 161, 150, 0.9), rgba(171, 161, 150, 0.72));
+    background: linear-gradient(180deg, rgba(236, 229, 219, 0.92), rgba(236, 229, 219, 0.76));
   }
 }

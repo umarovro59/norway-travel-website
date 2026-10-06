@@ -20,6 +20,8 @@
 
 .card {
   --seam: 50%;
+  /* hairline + soft glow: keeps white UI type readable on any photo */
+  --ui-shadow: 0 1px 2px rgba(14, 11, 8, 0.35), 0 0 18px rgba(14, 11, 8, 0.28);
   /* title metrics (cqi = % of card width) — overridden for RU below */
   --t: 7.2cqi;
   --t-row: 7.5cqi;
@@ -49,6 +51,23 @@
 .media {
   z-index: 0;
   transform-origin: 50% 100%;
+}
+
+/* Legibility scrim — stays above every slide, darkens only where UI sits:
+   the top bar (strongest under the nav + EN/RU), the band behind "WAY",
+   and the bottom-right corner under the arrows. Light enough to keep the
+   photo bright on dark slides, enough to hold white text on cloudy skies. */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 34% at 80% 0%, rgba(14, 11, 8, 0.46) 0%, rgba(14, 11, 8, 0.16) 55%, transparent 100%),
+    linear-gradient(180deg, rgba(14, 11, 8, 0.36) 0%, rgba(14, 11, 8, 0.14) 11%, transparent 24%),
+    radial-gradient(34% 20% at 64% 52%, rgba(14, 11, 8, 0.26) 0%, transparent 100%),
+    linear-gradient(0deg, rgba(14, 11, 8, 0.3) 0%, transparent 22%);
 }
 
 .slide {
@@ -106,7 +125,8 @@
   inset: 0;
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, rgba(92, 96, 98, 0.36) 0%, rgba(150, 132, 114, 0.26) 45%, rgba(86, 64, 48, 0.42) 100%);
+    radial-gradient(42% 16% at 76% 45%, rgba(34, 26, 20, 0.3) 0%, transparent 100%),
+    linear-gradient(180deg, rgba(74, 78, 80, 0.44) 0%, rgba(104, 90, 78, 0.42) 45%, rgba(70, 52, 40, 0.52) 100%);
 }
 
 /* ---------- shared layout grid ----------
@@ -184,6 +204,9 @@
   z-index: 2;
   clip-path: inset(0 0 0 var(--seam));
   color: var(--off-white);
+  text-shadow:
+    0 1px 2px rgba(14, 11, 8, 0.18),
+    0 4px 36px rgba(14, 11, 8, 0.34);
   animation: fade 1.2s 0.25s var(--ease) both;
 }
 
@@ -232,6 +255,7 @@
 
 .kicker {
   grid-column: title-start / split;
+  text-shadow: var(--ui-shadow);
   grid-row: kicker-start / kicker-end;
   align-self: end;
   margin-bottom: 0.15cqi;
@@ -255,12 +279,13 @@
   line-height: 1.42;
   letter-spacing: 0.01em;
   color: var(--off-white);
-  text-shadow: 0 1px 14px rgba(30, 22, 16, 0.35);
+  text-shadow: var(--ui-shadow);
   animation: rise 1s 0.5s var(--ease-out) both;
 }
 
 .cta {
   grid-column: inner-start / split;
+  text-shadow: var(--ui-shadow);
   grid-row: cta-start / cta-end;
   justify-self: start;
   align-self: center;

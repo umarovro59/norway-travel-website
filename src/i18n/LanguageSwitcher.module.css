@@ -14,7 +14,7 @@
 
 .divider {
   padding-inline: 0.45em;
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .button {
@@ -25,7 +25,7 @@
   font: inherit;
   letter-spacing: inherit;
   color: inherit;
-  opacity: 0.6;
+  opacity: 0.72;
   cursor: pointer;
   transition: opacity var(--dur) var(--ease);
 }

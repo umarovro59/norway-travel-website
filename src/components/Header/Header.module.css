@@ -9,6 +9,7 @@
 
 .logo {
   --logo-size: max(12px, 1.26cqi);
+  text-shadow: var(--ui-shadow, none);
   grid-row: 1;
   grid-column: inner-start / title-start;
   justify-self: start;
@@ -37,7 +38,7 @@
   text-transform: uppercase;
   color: var(--off-white);
   white-space: nowrap;
-  text-shadow: 0 1px 10px rgba(20, 16, 12, 0.25);
+  text-shadow: var(--ui-shadow, 0 1px 2px rgba(14, 11, 8, 0.35));
 }
 
 .link::after {
@@ -64,7 +65,12 @@
   display: flex;
   align-items: center;
   padding-left: 2.2cqi;
-  border-left: 1px solid rgba(244, 239, 232, 0.4);
+  border-left: 1px solid rgba(244, 239, 232, 0.55);
+  text-shadow: var(--ui-shadow, none);
+}
+
+.compactLang {
+  text-shadow: var(--ui-shadow, none);
 }
 
 /* RU labels are longer: slightly tighter tracking and gaps keep the bar in the photo half */
@@ -84,6 +90,10 @@
 
 .compactLang {
   --switch-size: 11px;
+}
+
+.menuButton {
+  text-shadow: var(--ui-shadow, none);
 }
 
 .menuButton,
