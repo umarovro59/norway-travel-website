@@ -1,0 +1,244 @@
+.section {
+  position: relative;
+  padding-block: var(--section-space) calc(var(--section-space) * 0.8);
+  overflow: clip;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 32px);
+  align-items: center;
+}
+
+.copy {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+  max-width: 520px;
+}
+
+.title {
+  margin-top: 28px;
+  font-family: var(--font-serif);
+  font-size: clamp(46px, 5.6vw, 92px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.body {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(24px, 3vw, 40px);
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: clamp(28px, 3vw, 44px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ctaIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  aspect-ratio: 1;
+  background: var(--bronze-600);
+  color: var(--off-white);
+  border-radius: 1px;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.ctaIcon svg {
+  width: 20px;
+  transition: translate var(--dur) var(--ease-out);
+}
+
+.cta:hover .ctaIcon {
+  background: var(--bronze-500);
+}
+
+.cta:hover .ctaIcon svg {
+  translate: 4px 0;
+}
+
+.media {
+  grid-column: 7 / span 5;
+  grid-row: 1 / span 2;
+  position: relative;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.image {
+  object-fit: cover;
+  /* bright summer photo, softened a touch toward the site's warm palette */
+  filter: saturate(0.92) contrast(1.04) brightness(1.02);
+  transition: transform 1.6s var(--ease-out);
+}
+
+/* faint warm veil at the base so the frosted note and caption blend in */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 244, 228, 0.06) 0%, transparent 35%, transparent 62%, rgba(52, 40, 30, 0.26) 100%);
+  pointer-events: none;
+}
+
+.media:hover .image {
+  transform: scale(1.03);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* handwritten-style note overlapping the photo edge on a frosted surface */
+.note {
+  grid-column: 10 / span 3;
+  grid-row: 1;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  width: min(100%, 300px);
+  margin-bottom: 10%;
+  padding: 28px 28px 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(181, 170, 158, 0.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  backdrop-filter: blur(18px) saturate(1.1);
+  box-shadow: 0 24px 50px -30px rgba(40, 30, 22, 0.6);
+  border: 1px solid rgba(255, 250, 243, 0.22);
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  rotate: -2deg;
+}
+
+.swash {
+  width: 132px;
+  margin-top: 10px;
+  fill: none;
+  stroke: var(--bronze-500);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.stats {
+  grid-column: 1 / span 6;
+  grid-row: 2;
+  align-self: end;
+  margin-top: clamp(48px, 6vw, 96px);
+}
+
+@media (max-width: 1099px) {
+  .copy {
+    grid-column: 1 / span 6;
+  }
+
+  .media {
+    grid-column: 7 / span 6;
+  }
+
+  .note {
+    grid-column: 8 / span 5;
+    justify-self: end;
+    margin-right: -8px;
+  }
+
+  .stats {
+    grid-column: 1 / span 6;
+  }
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 48px;
+  }
+
+  .copy,
+  .media,
+  .note,
+  .stats {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .media {
+    max-width: 560px;
+  }
+
+  .caption {
+    display: none;
+  }
+
+  .note {
+    justify-self: end;
+    width: min(78%, 300px);
+    margin: -120px 0 0;
+  }
+
+  .stats {
+    margin-top: 0;
+  }
+}
+
+/* RU: longer words — smaller display size, wider column */
+.section:lang(ru) .copy {
+  grid-column: 1 / span 6;
+  max-width: 600px;
+}
+
+.section:lang(ru) .title {
+  font-size: clamp(36px, 3.9vw, 68px);
+  line-height: 1.02;
+}
+
+@media (max-width: 899px) {
+  .section:lang(ru) .copy {
+    grid-column: 1;
+  }
+}
+
+.section:lang(ru) .cta {
+  letter-spacing: 0.12em;
+}

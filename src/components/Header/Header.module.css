@@ -1,0 +1,243 @@
+/* The header spans the hero grid and reuses its column lines via subgrid. */
+.header {
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.logo {
+  --logo-size: max(12px, 1.26cqi);
+  grid-row: 1;
+  grid-column: inner-start / title-start;
+  justify-self: start;
+  align-self: start;
+}
+
+.nav {
+  grid-row: 1;
+  grid-column: split / inner-end;
+  justify-self: end;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 2.75cqi;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  padding-block: 6px;
+  font-size: max(11px, 1cqi);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(20, 16, 12, 0.25);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* thin rule separating the links from EN / RU */
+.langItem {
+  display: flex;
+  align-items: center;
+  padding-left: 2.2cqi;
+  border-left: 1px solid rgba(244, 239, 232, 0.4);
+}
+
+/* RU labels are longer: slightly tighter tracking and gaps keep the bar in the photo half */
+.header:lang(ru) .link {
+  letter-spacing: 0.07em;
+}
+
+.header:lang(ru) .list {
+  gap: 2.2cqi;
+}
+
+.compact {
+  display: none;
+  align-items: center;
+  gap: 18px;
+}
+
+.compactLang {
+  --switch-size: 11px;
+}
+
+.menuButton,
+.close {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 10px 12px;
+  border: 0;
+  background: none;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  cursor: pointer;
+}
+
+.menuIcon {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 1099px) {
+  .nav {
+    display: none;
+  }
+
+  .compact {
+    display: inline-flex;
+    grid-row: 1;
+    grid-column: split / inner-end;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 899px) {
+  .logo {
+    --logo-size: 13px;
+    grid-column: inner-start / inner-end;
+  }
+
+  .compact {
+    grid-column: inner-start / inner-end;
+  }
+}
+
+/* ---------- full-screen menu ---------- */
+
+.dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--off-white);
+  background: rgba(33, 28, 24, 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(0.9);
+  backdrop-filter: blur(22px) saturate(0.9);
+}
+
+.dialog::backdrop {
+  background: transparent;
+}
+
+.dialog[open] {
+  animation: menu-in var(--dur) var(--ease-out);
+}
+
+.dialogInner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 26px var(--gutter) 32px;
+}
+
+.dialogTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dialogLogo {
+  --logo-size: 13px;
+}
+
+.close {
+  display: inline-flex;
+  padding-top: 0;
+}
+
+.dialogList {
+  display: grid;
+  gap: 4px;
+  margin-top: clamp(48px, 12vh, 120px);
+}
+
+.dialogList li {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.dialog[open] .dialogList li {
+  animation: menu-item var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(80ms + var(--i) * 60ms);
+}
+
+.dialogLink {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 16px 0;
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 9vw, 52px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.dialogIndex {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--copper-soft);
+}
+
+.dialogFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.dialogLang {
+  --switch-size: 13px;
+}
+
+.dialogNote {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off-white-muted);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}

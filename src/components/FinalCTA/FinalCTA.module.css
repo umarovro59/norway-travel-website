@@ -1,0 +1,106 @@
+.section {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: clamp(620px, 96svh, 980px);
+  padding-block: clamp(96px, 12vw, 180px) clamp(140px, 16vw, 240px);
+  border-radius: calc(var(--radius-xl) * 1.6) calc(var(--radius-xl) * 1.6) 0 0;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--off-white);
+  background: var(--charcoal-900);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+/* dark overlay that melts into the footer */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(23, 21, 19, 0.72) 0%, rgba(23, 21, 19, 0.35) 55%, rgba(23, 21, 19, 0.15) 100%),
+    linear-gradient(180deg, rgba(23, 21, 19, 0.25) 0%, rgba(23, 21, 19, 0.1) 40%, rgba(23, 21, 19, 0.7) 78%, var(--charcoal-900) 100%);
+}
+
+.copy {
+  max-width: 760px;
+}
+
+.title {
+  margin-top: 26px;
+  font-family: var(--font-serif);
+  font-size: clamp(50px, 7.6vw, 128px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stone-100);
+}
+
+.lines {
+  display: grid;
+  margin-top: clamp(28px, 3vw, 44px);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.7;
+  color: var(--off-white-muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: clamp(36px, 4vw, 56px);
+  padding: 20px 26px 20px 30px;
+  border: 1px solid rgba(244, 239, 232, 0.55);
+  border-radius: 1px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(23, 21, 19, 0.2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.ctaIcon {
+  width: 22px;
+  transition: translate var(--dur) var(--ease-out);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--off-white);
+  border-color: var(--off-white);
+  color: var(--charcoal-900);
+}
+
+.cta:hover .ctaIcon,
+.cta:focus-visible .ctaIcon {
+  translate: 5px 0;
+}
+
+.section:lang(ru) .title {
+  font-size: clamp(44px, 6.6vw, 112px);
+  line-height: 0.98;
+}
+
+.section:lang(ru) .cta {
+  letter-spacing: 0.14em;
+}

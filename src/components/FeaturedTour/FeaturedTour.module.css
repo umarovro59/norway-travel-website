@@ -1,0 +1,150 @@
+.card {
+  position: relative;
+  min-height: clamp(520px, 46vw, 720px);
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--off-white);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1.6s var(--ease-out);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.badge {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  padding: 8px 12px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(23, 21, 19, 0.38);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line-light);
+  border-radius: 2px;
+}
+
+/* frosted information panel — the hero's blurred surface, reused */
+.panel {
+  position: absolute;
+  inset: auto 22px 22px 22px;
+  max-width: 520px;
+  padding: clamp(22px, 2.4vw, 34px);
+  border-radius: var(--radius-md);
+  background: rgba(38, 33, 29, 0.42);
+  -webkit-backdrop-filter: blur(22px) saturate(0.9);
+  backdrop-filter: blur(22px) saturate(0.9);
+  border: 1px solid rgba(244, 239, 232, 0.14);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 3.4vw, 54px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.meta li {
+  padding-inline: 14px;
+  border-left: 1px solid var(--line-light);
+}
+
+.meta li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.description {
+  margin-top: 18px;
+  max-width: 46ch;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--off-white-muted);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-light);
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-style: italic;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ctaIcon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  aspect-ratio: 1;
+  background: var(--bronze-600);
+  border-radius: 1px;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.ctaIcon svg {
+  width: 19px;
+  transition: translate var(--dur) var(--ease-out);
+}
+
+.cta:hover .ctaIcon {
+  background: var(--bronze-500);
+}
+
+.cta:hover .ctaIcon svg {
+  translate: 3px 0;
+}
+
+@media (max-width: 559px) {
+  .card {
+    min-height: 600px;
+  }
+
+  .panel {
+    inset: auto 12px 12px 12px;
+  }
+
+  .meta li {
+    padding-inline: 10px;
+  }
+}

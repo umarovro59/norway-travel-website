@@ -1,0 +1,26 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3d3122;
+}
+
+.rule {
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.light {
+  color: var(--copper-soft);
+}
+
+.label:lang(ru) {
+  letter-spacing: 0.12em;
+}

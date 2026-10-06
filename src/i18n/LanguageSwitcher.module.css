@@ -1,0 +1,52 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-lato), var(--font-manrope), sans-serif;
+  font-size: var(--switch-size, max(11px, 1cqi));
+  letter-spacing: 0.12em;
+  color: var(--off-white);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.divider {
+  padding-inline: 0.45em;
+  opacity: 0.55;
+}
+
+.button {
+  position: relative;
+  padding: 6px 2px;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.button:hover,
+.button[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.button[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
